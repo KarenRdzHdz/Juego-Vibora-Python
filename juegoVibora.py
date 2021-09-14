@@ -20,6 +20,7 @@ Ejercicios denotados por ***ejercicio realizado***
 
 from random import randrange
 from turtle import *
+import random
 
 from freegames import square, vector
 
@@ -27,6 +28,9 @@ food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
 
+#Shuffle and set colors
+colors = ['yellow', 'pink', 'green', 'purple', 'blue']
+random.shuffle(colors)
 
 def change(x, y):
     "Change snake direction."
@@ -48,7 +52,7 @@ def move_food():
     if (new_food_position_x == 10) and (food.x < 140):
         food.x = food.x + new_food_position_x
     if (new_food_position_y == -10) and (-140 < food.y):
-        food.y = food.y + new_food_pos_y
+        food.y = food.y + new_food_position_y
     if (new_food_position_y == 10) and (food.y < 140):
         food.y = food.y + new_food_position_y
 
@@ -85,9 +89,10 @@ def move():
     clear()
 
     for body in snake:
-        square(body.x, body.y, 9, 'black')
+        #Assign color
+        square(body.x, body.y, 9, colors[1])
 
-    square(food.x, food.y, 9, 'green')
+    square(food.x, food.y, 9, colors[0])
     update()
     ontimer(move, 100)
 
