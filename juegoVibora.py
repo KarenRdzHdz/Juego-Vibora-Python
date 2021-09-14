@@ -38,6 +38,20 @@ def inside(head):
     "Return True if head inside boundaries."
     return -200 < head.x < 190 and -200 < head.y < 190
 
+def move_food():
+    "Food random without exiting boundaries"
+    new_food_position_x = randrange(-1,1) * 10
+    new_food_position_y = randrange(-1,1) * 10
+    "Check if food will leave boundaries"
+    if (new_food_position_x == -10) and (-140 < food.x):
+        food.x = food.x + new_food_position_x
+    if (new_food_position_x == 10) and (food.x < 140):
+        food.x = food.x + new_food_position_x
+    if (new_food_position_y == -10) and (-140 < food.y):
+        food.y = food.y + new_food_pos_y
+    if (new_food_position_y == 10) and (food.y < 140):
+        food.y = food.y + new_food_position_y
+
 
 def move():
     "Move snake forward one segment."
