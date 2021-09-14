@@ -48,7 +48,7 @@ def move_food():
     if (new_food_position_x == 10) and (food.x < 140):
         food.x = food.x + new_food_position_x
     if (new_food_position_y == -10) and (-140 < food.y):
-        food.y = food.y + new_food_pos_y
+        food.y = food.y + new_food_position_y
     if (new_food_position_y == 10) and (food.y < 140):
         food.y = food.y + new_food_position_y
 
@@ -91,6 +91,14 @@ def move():
     update()
     ontimer(move, 100)
 
+def clickLeft(x, y):
+    change(-10, 0)
+
+def clickRight(x, y):
+    change(10, 0)
+
+def clickMiddle(x, y):
+    change(0, 10)
 
 setup(420, 420, 370, 0)
 hideturtle()
@@ -100,5 +108,10 @@ onkey(lambda: change(10, 0), 'Right')
 onkey(lambda: change(-10, 0), 'Left')
 onkey(lambda: change(0, 10), 'Up')
 onkey(lambda: change(0, -10), 'Down')
+
+onscreenclick(clickLeft, btn=1)
+onscreenclick(clickRight, btn=3)
+onscreenclick(clickMiddle, btn=2)
+
 move()
 done()
