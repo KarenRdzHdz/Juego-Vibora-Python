@@ -87,7 +87,7 @@ def move():
         if head.y > 190:
             head.y = -200
         update()
-
+    
     snake.append(head)
     
     if head == food:
@@ -104,6 +104,7 @@ def move():
         square(body.x, body.y, 9, colors[1])
 
     square(food.x, food.y, 9, colors[0])
+    move_food()
     update()
     ontimer(move, s)
 
