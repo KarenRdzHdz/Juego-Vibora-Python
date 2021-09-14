@@ -101,6 +101,14 @@ def move():
     update()
     ontimer(move, s)
 
+def clickLeft(x, y):
+    change(-10, 0)
+
+def clickRight(x, y):
+    change(10, 0)
+
+def clickMiddle(x, y):
+    change(0, 10)
 
 setup(420, 420, 370, 0)
 hideturtle()
@@ -113,6 +121,11 @@ onkey(lambda: change(10, 0), 'Right')
 onkey(lambda: change(-10, 0), 'Left')
 onkey(lambda: change(0, 10), 'Up')
 onkey(lambda: change(0, -10), 'Down')
+
+onscreenclick(clickLeft, btn=1)
+onscreenclick(clickRight, btn=3)
+onscreenclick(clickMiddle, btn=2)
+
 move()
 print(snake)
 done()
