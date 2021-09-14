@@ -7,6 +7,15 @@ Exercises
 3. How would you move the food?
 4. Change the snake to respond to mouse clicks.
 
+Integrantes:
+Karen Lizette Rodríguez Hernández - A01197734
+Jorge Eduardo Arias Arias - A01570549
+Hernán Salinas Ibarra - A01570409
+
+14/09/2021
+
+Ejercicios denotados por ***ejercicio realizado***
+
 """
 
 from random import randrange
