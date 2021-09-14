@@ -20,6 +20,7 @@ Ejercicios denotados por ***ejercicio realizado***
 
 from random import randrange
 from turtle import *
+import random
 
 from freegames import square, vector
 
@@ -27,6 +28,11 @@ food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
 s = 100
+
+#Shuffle and set colors
+colors = ['blue','green', 'yellow', 'purple', 'black']
+random.shuffle(colors)
+
 
 def change(x, y):
     "Change snake direction."
@@ -41,16 +47,40 @@ def inside(head):
     "Return True if head inside boundaries."
     return -200 < head.x < 190 and -200 < head.y < 190
 
+def move_food():
+    "Food random without exiting boundaries"
+    new_food_position_x = randrange(-1,1) * 10
+    new_food_position_y = randrange(-1,1) * 10
+    "Check if food will leave boundaries"
+    if (new_food_position_x == -10) and (-140 < food.x):
+        food.x = food.x + new_food_position_x
+    if (new_food_position_x == 10) and (food.x < 140):
+        food.x = food.x + new_food_position_x
+    if (new_food_position_y == -10) and (-140 < food.y):
+        food.y = food.y + new_food_position_y
+    if (new_food_position_y == 10) and (food.y < 140):
+        food.y = food.y + new_food_position_y
+
 
 def move():
     "Move snake forward one segment."
     head = snake[-1].copy()
     head.move(aim)
-    
-    if not inside(head) or head in snake:
+
+    if head in snake:
         square(head.x, head.y, 9, 'red')
         update()
         return
+    if not inside(head):
+        if head.x < -200:
+            head.x = 190
+        if head.x > 190:
+            head.x = -200
+        if head.y < -200:
+            head.y = 190
+        if head.y > 190:
+            head.y = -200
+        update()
 
     snake.append(head)
     
@@ -64,9 +94,10 @@ def move():
     clear()
 
     for body in snake:
-        square(body.x, body.y, 9, 'black')
+        #Assign color
+        square(body.x, body.y, 9, colors[1])
 
-    square(food.x, food.y, 9, 'green')
+    square(food.x, food.y, 9, colors[0])
     update()
     ontimer(move, s)
 
