@@ -29,7 +29,7 @@ snake = [vector(10, 0)]
 aim = vector(0, -10)
 
 #Shuffle and set colors
-colors = ['yellow', 'pink', 'green', 'purple', 'blue']
+colors = ['blue','green', 'yellow', 'purple', 'black']
 random.shuffle(colors)
 
 def change(x, y):
